@@ -1,0 +1,125 @@
+---
+title: "国内使用 Claude Code 教程"
+summary: "详细指导如何在国内环境下安装和配置 Claude Code 开发工具"
+date: "2024-11-14"
+category: "AI Code"
+tags:
+  - AI
+  - Claude Code
+---
+
+## 1. 安装 Claude Code
+
+### macOS 安装步骤
+
+#### 方法一：一键安装脚本（推荐）
+
+
+```bash
+curl -fsSL https://claude.ai/install.sh | bash
+```
+
+#### 方法二：Homebrew 安装
+
+```bash
+brew install --cask claude-code
+```
+
+#### 方法三：NPM 安装（需 Node.js 18.0+）
+
+```bash
+npm install -g @anthropic-ai/claude-code
+```
+
+### 验证安装
+
+安装后，在新的终端窗口中执行以下命令，如果显示版本号则说明成功：
+
+```bash
+claude --version
+```
+
+## 2. 获取 API 密钥（使用中转站）
+
+由于地区限制，我们需要通过中转站使用 Claude API。
+
+### 注册中转站
+
+1.  访问可靠的中转站服务：<https://deeprouter.top/register?aff=FTvp>
+2.  获取 API 密钥：在控制台中创建一个新的 API 密钥（Token），类型选择 Claude
+3.  复制密钥：妥善保存好生成的 API 密钥和中转站提供的 API 基础地址（Base URL：<https://deeprouter.top）>
+
+### 操作步骤
+- 点击「添加令牌」，名称随便起
+![添加令牌](https://money-blog.oss-cn-guangzhou.aliyuncs.com/claude-code-course/737fa49f-d0d6-4efd-bcda-95db9dce2afa.png)
+- 令牌分组选择 Claude
+![令牌分组选择 Claude](https://money-blog.oss-cn-guangzhou.aliyuncs.com/claude-code-course/8878ca67-2adc-4c23-a5a9-8f54336ba8c2.png)
+- 复制令牌，下一步需要用到
+![复制令牌](https://money-blog.oss-cn-guangzhou.aliyuncs.com/claude-code-course/629b3181-3673-4565-aa6c-7a5018817976.png)
+
+> **重要安全提示**
+>
+> 使用第三方中转站时，请务必注意：
+>
+> *   选择信誉良好的服务商，避免数据泄露风险
+> *   切勿处理敏感代码或个人信息，因为你的请求会经过第三方服务器
+> *   中转站的稳定性取决于服务商，可能会影响使用体验
+
+## 3. 配置 Claude Code
+
+### 方法一：配置环境变量
+
+编辑 shell 配置文件（如 `~/.zshrc` 或 `~/.bash_profile`）：
+
+```bash
+export ANTHROPIC\_AUTH\_TOKEN="你的API密钥"
+export ANTHROPIC\_BASE\_URL="<https://deeprouter.top>"
+```
+
+编辑后，执行以下命令使配置生效：
+
+```bash
+source \~/.zshrc
+或
+source \~/.bash\_profile
+```
+
+### 方法二：使用配置文件
+
+创建或编辑配置文件 `~/.claude/settings.json`，写入以下配置信息：
+
+```json
+{
+    "env": {
+        "ANTHROPIC\_AUTH\_TOKEN": "你的API密钥",
+        "ANTHROPIC\_BASE\_URL": "<https://deeprouter.top>",
+        "ANTHROPIC\_MODEL": "claude-sonnet-4-5-20250929",
+        "ANTHROPIC\_SMALL\_FAST\_MODEL": "claude-haiku-4-5-20251001"
+    }
+}
+```
+
+将 `ANTHROPIC_AUTH_TOKEN` 替换为你的 API 令牌，`ANTHROPIC_MODEL` 可以替换为你需要的其他模型 ID。
+
+## 4. 使用 Claude Code
+
+配置完成后，在你的项目目录下启动 Claude Code：
+
+
+```bash
+cd /你的/项目/路径
+claude
+```
+
+### 初次运行引导流程
+
+启动后，将看到以下配置步骤：
+
+1.  **选择主题** → 选择喜欢的主题 + 按 Enter
+2.  **安全须知** → 确认安全须知 + 按 Enter
+3.  **Terminal 配置** → 使用默认配置 + 按 Enter
+4.  **工作目录信任** → 信任当前目录 + 按 Enter
+
+**恭喜！** 现在你可以开始与你的 AI 编程搭档一起写代码了！
+
+***

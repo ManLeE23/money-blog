@@ -1,0 +1,29 @@
+---
+title: "AI 设计系统的搭建经验"
+summary: "记录团队在搭建 AI 组件库和设计规范时踩过的坑。"
+date: "2024-05-28"
+category: "Design Systems"
+tags:
+  - Design System
+  - AI
+  - Components
+featured: false
+coverImage: "https://images.unsplash.com/photo-1559028012-481c04fa702d?auto=format&fit=crop&w=1600&q=80"
+---
+
+好的设计系统能够帮助团队更快地构建一致的体验，面对 AI 功能时，我们需要额外关注以下几点：
+
+### 语气与反馈
+
+AI 输出存在不确定性，要定义清晰的反馈层级，帮助用户理解状态、信心度以及下一步操作。
+
+### 组件抽象
+
+- 统一的 Prompt 输入组件
+- 多模态输入支持（文本 + 上传 + 语音）
+- 结果展示组件需要支持复制、二次编辑、转发等操作
+
+### 评审机制
+
+设计和开发需要建立新的评审标准，例如「AI 输出是否可解释」、「误导性反馈是否最小化」。
+
