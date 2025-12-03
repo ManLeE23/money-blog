@@ -7,8 +7,8 @@ import { usePathname } from "next/navigation";
 import { SearchForm } from "@/components/search-form";
 import { profile } from "@/data/profile";
 import { EmailIcon } from "@/components/icons/EmailIcon";
-import { GitHubIcon } from "@/components/icons/GitHubIcon";
-import { WeChatIcon } from "@/components/icons/WeChatIcon";
+import { AiFillGithub } from "react-icons/ai";
+import { AiFillWechat } from "react-icons/ai";
 
 const navItems = [
   { href: "/", label: "首页" },
@@ -19,8 +19,8 @@ const contactLinks = profile.contacts;
 
 const contactIconComponents = {
   Email: EmailIcon,
-  WeChat: WeChatIcon,
-  GitHub: GitHubIcon,
+  WeChat: AiFillWechat,
+  GitHub: AiFillGithub,
 };
 
 export function SiteHeader() {
@@ -84,7 +84,7 @@ export function SiteHeader() {
         </div>
         <button
           type="button"
-          className="ml-auto inline-flex items-center justify-center rounded-full border border-slate-200 p-2 text-slate-600 transition hover:border-slate-300 hover:text-slate-900 md:hidden"
+          className="ml-auto inline-flex items-center justify-center rounded-full p-2 text-slate-600 transition hover:text-slate-900 md:hidden"
           onClick={() => setOpen((prev) => !prev)}
           aria-expanded={open}
         >

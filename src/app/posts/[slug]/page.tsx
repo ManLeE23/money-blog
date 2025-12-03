@@ -11,6 +11,7 @@ import {
   getPostsByTag,
 } from '@/lib/posts';
 import { renderMarkdown } from '@/lib/markdown';
+import { AISummary } from '@/components/article/AISummary';
 
 interface PostPageProps {
   params: Promise<{ slug: string }>
@@ -79,9 +80,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-[0.2em] text-slate-500">
           <span>{new Date(post.date).toLocaleDateString()}</span>
           <span aria-hidden>•</span>
-          <span>{post.readingTime.text}</span>
-          <span aria-hidden>•</span>
-          <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-600">
+          <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate-600">
             {post.category}
           </span>
         </div>
@@ -100,6 +99,8 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           ))}
         </div>
       </header>
+      {/* AI Generated Summary */}
+      <AISummary slug={slug} />
       {post.coverImage ? (
         <div className="overflow-hidden rounded-4xl">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -113,6 +114,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
       <div className="prose prose-slate max-w-none text-slate-700 prose-headings:text-slate-900">
         <div dangerouslySetInnerHTML={{ __html: html }} />
       </div>
+
       <footer className="space-y-8">
         <div className="rounded-3xl bg-slate-900 px-6 py-8 text-white">
           <p className="text-sm uppercase tracking-[0.2em] text-slate-300">

@@ -2,7 +2,6 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 
 import matter from 'gray-matter';
-import readingTime from 'reading-time';
 
 const postsDirectory = path.join(process.cwd(), 'content', 'posts');
 
@@ -16,14 +15,9 @@ export type Post = {
   featured: boolean;
   coverImage?: string;
   content: string;
-  readingTime: {
-    minutes: number;
-    text: string;
-  };
 };
 
 async function readPostFile(fileName: string) {
-  debugger;
   const fullPath = path.join(postsDirectory, fileName);
   const fileContents = await fs.readFile(fullPath, 'utf-8');
   const { data, content } = matter(fileContents);
@@ -45,8 +39,6 @@ async function readPostFile(fileName: string) {
   const coverImage =
     typeof data.coverImage === 'string' ? data.coverImage : undefined;
 
-  const time = readingTime(content);
-
   const post: Post = {
     slug,
     title: data.title,
@@ -57,10 +49,6 @@ async function readPostFile(fileName: string) {
     featured,
     coverImage,
     content,
-    readingTime: {
-      minutes: time.minutes,
-      text: time.text,
-    },
   };
 
   return post;

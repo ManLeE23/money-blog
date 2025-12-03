@@ -112,7 +112,7 @@ export function Comments() {
       <h2 className="text-xl font-semibold text-slate-900">评论</h2>
       
       {/* 评论表单 */}
-      <div className="rounded-3xl bg-slate-50 p-6">
+      <div className="rounded-3xl pb-6">
         <h3 className="text-lg font-medium text-slate-900 mb-4">发表评论</h3>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -127,7 +127,7 @@ export function Comments() {
                 value={formData.name}
                 onChange={handleInputChange}
                 required
-                className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-slate-300 rounded-lg outline-none"
                 placeholder="请输入您的名字"
               />
             </div>
@@ -142,7 +142,7 @@ export function Comments() {
                 value={formData.email}
                 onChange={handleInputChange}
                 required
-                className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-slate-300 rounded-lg outline-none"
                 placeholder="请输入您的邮箱"
               />
             </div>
@@ -158,14 +158,14 @@ export function Comments() {
               onChange={handleInputChange}
               required
               rows={4}
-              className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-3 py-2 border border-slate-300 rounded-lg outline-none"
               placeholder="请输入您的评论..."
             />
           </div>
           <button
             type="submit"
             disabled={isSubmitting}
-            className="px-6 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="px-6 py-2 bg-black text-white font-medium rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isSubmitting ? '发表中...' : '发表评论'}
           </button>

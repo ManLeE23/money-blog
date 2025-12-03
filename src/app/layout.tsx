@@ -3,6 +3,7 @@ import { Inter, Fira_Code } from "next/font/google";
 
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { ChatFloatingButton } from "@/components/chat/ChatFloatingButton";
 
 import "./globals.css";
 
@@ -23,7 +24,7 @@ const siteUrl = "https://Money.dev";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Money · AI Frontend Blog",
+    default: "Money · AI Engineer Blog",
     template: "%s · Money",
   },
   description:
@@ -32,14 +33,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: siteUrl,
-    title: "Money · AI Frontend Blog",
+    title: "Money · AI Engineer Blog",
     description:
       "记录一名前端工程师在 AI 产品落地过程中的观察与实践，聚焦设计系统、Prompt Ops 与工程化经验。",
-    siteName: "Money · AI Frontend Blog",
+    siteName: "Money · AI Engineer Blog",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Money · AI Frontend Blog",
+    title: "Money · AI Engineer Blog",
     description:
       "记录一名前端工程师在 AI 产品落地过程中的观察与实践。",
     creator: "@Money",
@@ -61,6 +62,7 @@ export default function RootLayout({
           {children}
         </main>
         <SiteFooter />
+        <ChatFloatingButton />
       </body>
     </html>
   );

@@ -1,0 +1,42 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+// prisma/schema.prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite" // 本地开发用 SQLite（无需额外安装数据库）
+  url = env("DATABASE_URL")
+}
+
+// 对话主表（一个对话包含多条消息）
+model Conversation {
+  id        String    @id @default(uuid()) // 对话唯一ID
+  createdAt DateTime  @default(now()) // 对话创建时间
+  updatedAt DateTime  @updatedAt // 对话更新时间
+  messages  Message[] // 关联的消息列表（一对多）
+}
+
+// 消息明细表（存储每一轮的用户/AI消息）
+model Message {
+  id              String       @id @default(uuid()) // 消息唯一ID
+  content         String       // 消息内容
+  role            String       // 角色：user（用户）/ assistant（AI）
+  conversationId  String       // 关联的对话ID
+  createdAt       DateTime     @default(now()) // 消息创建时间
+  conversation    Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade) // 级联删除（删除对话时删除关联消息）
+}
+
+// AI文章总结表
+model PostSummary {
+  id        String   @id @default(uuid()) // 总结唯一ID
+  slug      String   @unique // 文章slug，唯一标识
+  content   String   // AI生成的总结内容
+  createdAt DateTime @default(now()) // 创建时间
+  updatedAt DateTime @updatedAt // 更新时间
+}

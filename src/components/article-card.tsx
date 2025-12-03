@@ -28,8 +28,6 @@ export function ArticleCard({ post, orientation = "vertical" }: ArticleCardProps
             </span>
             <span aria-hidden className="hidden sm:inline">•</span>
             <span>{new Date(post.date).toLocaleDateString()}</span>
-            <span aria-hidden className="hidden sm:inline">•</span>
-            <span>{post.readingTime.text}</span>
           </div>
           <h3 className="text-lg font-semibold text-slate-900 sm:text-xl">
             {post.title}
