@@ -284,7 +284,7 @@ export function ChatPanel({ onClose }: ChatPanelProps) {
   const loadHistoryMessages = async (conversationId: string) => {
     try {
       setHistoryLoading(true);
-      const data = await fetchHistoryMessages({ conversationId });
+      const data: any = await fetchHistoryMessages({ conversationId });
       if (data.messages) {
         const formattedMessages = data.messages.map((msg: any) => ({
           id: msg.id,
