@@ -19,32 +19,20 @@ const fira = Fira_Code({
   display: "swap",
 });
 
-const siteUrl = "https://Money.dev";
+// const siteUrl = "https://Money.dev";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  // metadataBase: new URL(siteUrl),
   title: {
     default: "Money · AI Engineer Blog",
     template: "%s · Money",
   },
   description:
     "记录一名前端工程师在 AI 产品落地过程中的观察与实践，聚焦设计系统、Prompt Ops 与工程化经验。",
-  authors: [{ name: "Money", url: siteUrl }],
-  openGraph: {
-    type: "website",
-    url: siteUrl,
-    title: "Money · AI Engineer Blog",
-    description:
-      "记录一名前端工程师在 AI 产品落地过程中的观察与实践，聚焦设计系统、Prompt Ops 与工程化经验。",
-    siteName: "Money · AI Engineer Blog",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Money · AI Engineer Blog",
-    description:
-      "记录一名前端工程师在 AI 产品落地过程中的观察与实践。",
-    creator: "@Money",
-  },
+  authors: [{ name: "Money", url: '' }],
+  icons: [
+    { rel: "icon", url: "/logo.png", sizes: "32x32" }, // 基础图标（必填）
+  ]
 };
 
 export default function RootLayout({
